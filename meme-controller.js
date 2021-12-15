@@ -13,7 +13,8 @@ function init() {
     gCtx = gCanvas.getContext('2d')
     // resize
     // listeners
-    renderMeme('1')
+    // note
+    renderMeme('1');
 }
 
 
