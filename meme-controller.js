@@ -3,33 +3,42 @@ var gCanvas;
 var gCtx;
 var gCurrColor = 'white'
 var gCurrFontSize = 50
-var gCurrLine = 'top'
 
+var gMeme = {
+    selectedImgId:'1',
+    selectedLineIdx:0,
+    lines: [
+        {txt:'Enter line',size:50,align:'left',color:'white'},
+        {txt:'Enter another line',size:50,align:'left',color:'red'}
+    ]
 
-
-
-function init() {
-    gCanvas = document.querySelector('#my-canvas')
-    gCtx = gCanvas.getContext('2d')
-    // resize
-    // listeners
-    // note
-    renderMeme('1');
 }
 
 
 
 
-function renderMeme(num) {
-    var memes = getMemes()
-    drawImage(num)
-    var meme = memes.find((m) => {
-        return m.imgId === num
-    })
-    if(gCurrLine==='top')drawText(meme.txt,250,50)
-    if(gCurrLine==='bottom') drawText(meme.txt,gCanvas.height-250,gCanvas.width - 50)
+function init() {
+    renderImgs()
+    gCanvas = document.querySelector('#my-canvas')
+    gCtx = gCanvas.getContext('2d')
+    // resize
+    // listeners
+    renderMeme();
+}
 
-    ///add input placeholder listener
+function onImgSelect(num){
+    // setCurrMeme(num)
+    gMeme.selectedImgId = num
+    setEditor()
+}
+
+
+
+function renderMeme() {
+    drawImage(gMeme.selectedImgId)
+    drawText(gMeme.lines[0].txt,250,50,0)
+    drawText(gMeme.lines[1].txt,gCanvas.height-250,gCanvas.width-50,1)
+     ///add input placeholder listener
 }
 
 function drawImage(img) {
@@ -43,47 +52,52 @@ function drawImage(img) {
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
 }
 
-function drawText(txt, x, y) {
+function drawText(txt, x, y,idx) {
     gCtx.textBaseline = 'middle'
     gCtx.textAlign = 'center'
-    gCtx.font = ` ${gCurrFontSize}px monospace`;
-    gCtx.fillStyle = gCurrColor;
+    gCtx.font = ` ${gMeme.lines[idx].size}px monospace`;
+    gCtx.fillStyle = gMeme.lines[idx].color;
     gCtx.fillText(txt, x, y);
 }
 
 function onSetTxt(val){
     setLineTxt(val)
-    renderMeme(gCurrMeme)
+    renderMeme()
     
+}
+
+function setLineTxt(val){
+    gMeme.lines[gMeme.selectedLineIdx].txt = val 
 }
 
 
 
 
-function setEditor(num){
-    
+function setEditor(){
     var elHome = document.querySelector('.home')
     var elEditor = document.querySelector('.editor')
     elHome.style.display = 'none'
-    renderMeme(num)
+    renderMeme()
     elEditor.style.display = 'grid'
 }
 
 function onSetColor(val){
-    gCurrColor = val
-    renderMeme(gCurrMeme)
+    gMeme.lines[gMeme.selectedLineIdx].color= val
+    renderMeme()
 }
 
 function onSetFont(val){ 
-    if (val==='+') gCurrFontSize += 2
-    if (val==='-') gCurrFontSize -= 2
-    renderMeme(gCurrMeme)
+    console.log('gMeme.lines[]:', gMeme.selectedLineIdx);
+    
+    if (val==='+') gMeme.lines[gMeme.selectedLineIdx].size += 2
+    if (val==='-') gMeme.lines[gMeme.selectedLineIdx].size -= 2
+    renderMeme()
 }
 
 function onSwitchLine(){
-    if(gCurrLine==='top'){
-        gCurrLine = 'bottom'
-    } else{
-        gCurrLine = 'top'
+    if(gMeme.selectedLineIdx===1){
+        gMeme.selectedLineIdx--
+        return
     }
+    gMeme.selectedLineIdx++
 }
