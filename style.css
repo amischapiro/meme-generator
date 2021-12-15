@@ -4,6 +4,7 @@
 
 body{
     margin: 0;
+    background-color: lightgray;
 }
 
 .header{
@@ -19,6 +20,7 @@ body{
     padding-left: 20px;
 }
 
+
 .header-nav ul li a{
     line-height: 50px;
     display: block;
@@ -26,9 +28,17 @@ body{
     text-decoration: none;
     color: #FFFFFF;  
 }
+.memes-btn{
+    background-color:#ff7f00 ;
+    border: none;
+    color: #FFF;
+}
 .header-nav ul li{
     width: 50px;
     /* padding-right: 10px; */
+}
+button{
+    cursor: pointer;
 }
 /* HOME */
 
@@ -44,8 +54,36 @@ img{
     height: 100%;
     width: 100%;
 }
+.search-bar{
+    /* height: fit-content; */
+    min-height: 50px;
+    background-color: #fff;
 
-
+}
+.search-bar ul li button{
+    /* line-height: 50px;  */
+    /* display: block;  */
+    /* text-align: center; */
+    background-color: #fff;
+    border: none;
+    height: 50px;
+    width: 80px;
+    font-size: 20px;
+}
+.search button{
+    height: 20px;
+    background-color: #fff;
+    border: none;
+    border-bottom: 2px black solid;
+    height: 50px;
+}
+.search input{
+    border: none;
+    border-bottom: 2px black solid;
+    height: 50px;
+    font-size: 20px;
+    
+}
 
 
 
@@ -58,66 +96,119 @@ img{
 /* EDITOR  */
 .editor{
     display: grid;
-    width: 100%;
+    width: 90%;
     height: 500px;
     margin: 0 auto;
     grid-template-columns: 1fr 1fr;
     display: none;
-    /* none!!!!!!!!!! */
 }
 canvas{
     display: block;
     margin: 0 auto;
     background-color: #fff;
-    border: 1px black solid;
+    /* border: 1px black solid; */
+    cursor: grab;
 }
 
 .canvas-contianer{
     margin: 0 auto;
     width: 100%;
-    height: 100%;
+    height: 500px;
 
 }
 .editor-container{
+    display: grid;
     border: solid black 1px;
     width: 100%;
-    height: 100%;
-    background-color: gray;
-    display: grid;
+    height: 500px;
     grid-template-columns:repeat(5,1fr) ;
     grid-template-rows: repeat(4,1fr) 2fr 1fr;
+    /* gap: 20px; */
 }
 .text-input{
-    border-radius: 5px;
-    border: none;
+    border-radius: 6px;
+    /* border: none; */
     grid-column: 1/6;
 }
 .inc-icon{
     grid-row: 3/4;
     grid-column: 1/2;
+    border-radius: 6px;
+    background-color: #fff;
 }
 .dec-icon{
     grid-row: 3/4;
     grid-column: 2/3;
+    border-radius: 6px;
+    background-color: #fff;
 }
 .line-switch{
     grid-row: 2/3;
     grid-column: 2/3;
+    border-radius: 6px;
+    background-color: #fff;
 }
 .add{
     grid-row: 2/3;
     grid-column: 3/4;
+    border-radius: 6px;
+    background-color: #fff;
 }
 .trash{
     grid-row: 2/3;
     grid-column: 4/5;
+    border-radius: 6px;
+    background-color: #fff;
 }
 .text-ltr{
     grid-row: 3/4;
     grid-column: 3/4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+.text-center{
+    grid-row: 3/4;
+    grid-column: 4/5;
+    border-radius: 6px;
+    background-color: #fff;
+}
+.text-rtl{
+    grid-row: 3/4;
+    grid-column: 5/6;
+    border-radius: 6px;
+    background-color: #fff;
+}
+#font-select{
+    grid-row: 4/5;
+    grid-column: 1/4;
+    border-radius: 6px;
+}
+.text-stroke{
+    grid-row: 4/5;
+    grid-column: 4/5;
+    border-radius: 6px;
+    background-color: #fff;
+}
+.color{
+    grid-row: 4/5;
+    grid-column: 5/6;
+    border-radius: 6px;
+    height: 100%;
+    width: 100%;
+}
+.save{
+    border-radius: 6px;
+    background-color: #fff;
 }
 
 
+/* FOOTER  */
+.footer{
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    background-color: #ff7f00;
+}
 
 
 /* HELPERS */
@@ -134,7 +225,4 @@ canvas{
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-.color{
-    background: url(/icons/paint-board-and-brush.png);
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,56 +8,87 @@
     <link rel="stylesheet" href="style.css">
     <title>Memegen</title>
 </head>
+
 <body onload="init()">
     <header class="header">
-        <div class="flex align-center space-between header-content"> 
+        <div class="flex align-center space-between header-content">
             <div class="logo">memegen</div>
             <nav class="header-nav">
                 <ul class="clean-list flex">
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">Gallery|</a></li>
+                    <li><a href="#">About|</a></li>
+                    <!-- <li><a href="#">Memes</a></li> -->
+                    <button class="memes-btn">Memes</button>
                 </ul>
             </nav>
         </div>
     </header>
+    <section class="search-bar">
+        <div class="flex align-center space-between header-content">
+            <div class="search flex">
+                <input type="text" name="search-input" id="search-input" placeholder="Enter search keyword"><button class="search-btn"><img
+                        src="icons/search-icon.png" alt=""></button>
+            </div>
+            <nav class="search-nav">
+                <ul class="clean-list flex">
+                    <li><button>funny</button></li>
+                    <li><button>comics</button></li>
+                    <li><button>dogs</button></li>
+                    <li><button>drinks</button></li>
+                    <li><button>books</button></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </section>
 
     <section class="home">
 
     </section>
-  
-    
-    
-    
+
+
+
+
     <section class="editor">
         <div class="canvas-container">
-            <canvas 
-            id="my-canvas"
-            height="500"
-            width="500"
-            ></canvas>
+            <canvas id="my-canvas" height="500" width="500"></canvas>
 
         </div>
         <div class="editor-container">
             <input class="text-input" type="text" style="font-size: 20px;" onkeyup="onSetTxt(value)">
-            <button class="line-switch" onclick="onSwitchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-            <button class="add" ><img src="icons/add.png" alt=""></button>
+            <button class="line-switch" onclick="onSwitchLine()"><img
+                    src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+            <button class="add"><img src="icons/add.png" alt=""></button>
             <button class="trash"><img src="icons/trash.png" alt=""></button>
-            <button class="dec-icon" onclick="onSetFont('-')"> <img src="icons/decrease font - icon.png" alt=""></button>
-            <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png" alt=""></button>
+            <button class="dec-icon" onclick="onSetFont('-')"> <img src="icons/decrease font - icon.png"
+                    alt=""></button>
+            <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png"
+                    alt=""></button>
             <button class="text-ltr"><img src="icons/align-to-right.png" alt=""></button>
             <button class="text-center"><img src="icons/center-text-alignment.png" alt=""></button>
             <button class="text-rtl"><img src="icons/align-to-left.png" alt=""></button>
-            <select name="font-select" id="font-select"><option value="Impact">Impact</option></select>
+            <select name="font-select" id="font-select">
+                <option value="Impact">Impact</option>
+            </select>
             <button class="text-stroke"><img src="icons/text stroke.png" alt=""></button>
-            <input type="color" placeholder="white" onchange="onSetColor(value)">
+            <input class="color" type="color" placeholder="white" onchange="onSetColor(value)">
+            <button class="save" onclick="onSave()">Save meme</button>
 
         </div>
-
-
-        
     </section>
+        <footer class="footer flex align-center">
+            <div class="logo">memegen</div>
+            <small>all rights reserved 2021</small>
+
+
+        </footer>
+
+
+    <script src="service/storage-service.js"></script>
     <script src="service/meme-service.js"></script>
     <script src="gallery-controller.js"></script>
     <script src="meme-controller.js"></script>
 </body>
+
 </html>

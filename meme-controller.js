@@ -91,7 +91,9 @@ function setLineTxt(val){
 function setEditor(){
     var elHome = document.querySelector('.home')
     var elEditor = document.querySelector('.editor')
+    var elSearchBar = document.querySelector('.search-bar')
     elHome.style.display = 'none'
+    elSearchBar.style.display = 'none'
     renderMeme()
     elEditor.style.display = 'grid'
 }
