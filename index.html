@@ -38,10 +38,17 @@
         </div>
         <div class="editor-container">
             <input class="text-input" type="text" style="font-size: 20px;" onkeyup="onSetTxt(value)">
-            <input type="color" placeholder="white" onchange="onSetColor(value)">
             <button class="line-switch" onclick="onSwitchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+            <button class="add" ><img src="icons/add.png" alt=""></button>
+            <button class="trash"><img src="icons/trash.png" alt=""></button>
             <button class="dec-icon" onclick="onSetFont('-')"> <img src="icons/decrease font - icon.png" alt=""></button>
             <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png" alt=""></button>
+            <button class="text-ltr"><img src="icons/align-to-right.png" alt=""></button>
+            <button class="text-center"><img src="icons/center-text-alignment.png" alt=""></button>
+            <button class="text-rtl"><img src="icons/align-to-left.png" alt=""></button>
+            <select name="font-select" id="font-select"><option value="Impact">Impact</option></select>
+            <button class="text-stroke"><img src="icons/text stroke.png" alt=""></button>
+            <input type="color" placeholder="white" onchange="onSetColor(value)">
 
         </div>
 

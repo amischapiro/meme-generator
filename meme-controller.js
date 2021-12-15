@@ -36,8 +36,8 @@ function onImgSelect(num){
 
 function renderMeme() {
     drawImage(gMeme.selectedImgId)
-    drawText(gMeme.lines[0].txt,250,50,0)
-    drawText(gMeme.lines[1].txt,gCanvas.height-250,gCanvas.width-50,1)
+    drawText(gMeme.lines[0].txt,140,30,0)
+    drawText(gMeme.lines[1].txt,gCanvas.height-500,gCanvas.width-80,1)
      ///add input placeholder listener
 }
 
@@ -53,11 +53,26 @@ function drawImage(img) {
 }
 
 function drawText(txt, x, y,idx) {
-    gCtx.textBaseline = 'middle'
-    gCtx.textAlign = 'center'
+    ///border only on current text
+    if(gMeme.selectedLineIdx===0)drawBorder(txt,x,y)
+    if(gMeme.selectedLineIdx===1)drawBorder(txt,x,y)
+    gCtx.textBaseline = 'top'
+    // gCtx.textBaseline = 'middle'
+    // gCtx.textAlign = 'center'
+    gCtx.textAlign = 'left'
     gCtx.font = ` ${gMeme.lines[idx].size}px monospace`;
     gCtx.fillStyle = gMeme.lines[idx].color;
     gCtx.fillText(txt, x, y);
+}
+
+function drawBorder(txt,x,y){
+    var lineHeight = gMeme.lines[gMeme.selectedLineIdx].size *1.286
+    var textWidth = gCtx.measureText(txt).width
+    gCtx.setLineDash([5,15])
+    gCtx.strokeRect(x,y,textWidth,lineHeight)
+}
+function clearBorder(x,y){
+    gCtx.clearRect(x,y,gCtx.measureText(txt).width,gMeme.lines[gMeme.selectedLineIdx].size *1.286)
 }
 
 function onSetTxt(val){
