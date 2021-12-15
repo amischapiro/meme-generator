@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+.header{
+    background-color: #ff7f00;
+    height: 50px;
+    color: white;
+}
+.header-content{
+    height: inherit;
+}
+.logo{
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.header-nav ul li a{
+    line-height: 50px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;  
+}
+.header-nav ul li{
+    width: 50px;
+    /* padding-right: 10px; */
+}
+/* HOME */
+
+.home{
+    display: grid;
+    width: 100%;
+    padding: 20px 50px 20px ;
+    grid-template-columns:repeat(3,1fr) ;
+    grid-template-rows: repeat(6,1fr);
+    gap:2rem;
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* EDITOR  */
+.editor{
+    display: grid;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    display: none;
+    /* none!!!!!!!!!! */
+}
+canvas{
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px black solid;
+}
+
+.canvas-contianer{
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+
+}
+.editor-container{
+    border: solid black 1px;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    display: grid;
+    grid-template-columns:repeat(5,1fr) ;
+    grid-template-rows: repeat(4,1fr) 2fr 1fr;
+}
+.text-input{
+    border-radius: 5px;
+    border: none;
+    grid-column: 1/6;
+}
+.inc-icon{
+    grid-row: 3/4;
+    grid-column: 1/2;
+}
+.dec-icon{
+    grid-row: 3/4;
+    grid-column: 2/3;
+}
+.line-switch{
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+
+
+
+/* HELPERS */
+.flex {
+    display: flex;
+} 
+.flex.space-between{
+    justify-content: space-between;
+}
+.flex.align-center{
+    align-items: center;
+}
+.clean-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.color{
+    background: url(/icons/paint-board-and-brush.png);
+}

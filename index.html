@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Memegen</title>
+</head>
+<body onload="init()">
+    <header class="header">
+        <div class="flex align-center space-between header-content"> 
+            <div class="logo">memegen</div>
+            <nav class="header-nav">
+                <ul class="clean-list flex">
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="home">
+        <img class="img1" src="img/1.jpg" onclick="onImgSelect('1')">
+        <img class="img2" src="img/2.jpg" onclick="onImgSelect('2')">
+        <img class="img3" src="img/3.jpg"onclick="onImgSelect('3')" >
+        <img class="img4" src="img/4.jpg"onclick="onImgSelect('4')" >
+        <img class="img5" src="img/5.jpg"onclick="onImgSelect('5')" >
+        <img class="img6" src="img/6.jpg"onclick="onImgSelect('6')" >
+        <img class="img7" src="img/7.jpg"onclick="onImgSelect('7')" >
+        <img class="img8" src="img/8.jpg"onclick="onImgSelect('8')" >
+        <img class="img9" src="img/9.jpg"onclick="onImgSelect('9')" >
+        <img class="img10" src="img/10.jpg" onclick="onImgSelect('10')">
+        <img class="img11" src="img/11.jpg"onclick="onImgSelect('11')" >
+        <img class="img12" src="img/12.jpg"onclick="onImgSelect('12')" >
+        <img class="img13" src="img/13.jpg"onclick="onImgSelect('13')" >
+        <img class="img14" src="img/14.jpg"onclick="onImgSelect('14')" >
+        <img class="img15" src="img/15.jpg"onclick="onImgSelect('15')" >
+        <img class="img16" src="img/16.jpg"onclick="onImgSelect('16')" >
+        <img class="img17" src="img/17.jpg"onclick="onImgSelect('17')" >
+        <img class="img18" src="img/18.jpg"onclick="onImgSelect('18')" >
+
+
+    </section>
+  
+    
+    
+    
+
+
+
+    
+    
+    <section class="editor">
+        <div class="canvas-container">
+            <canvas 
+            id="my-canvas"
+            height="500"
+            width="500"
+            ></canvas>
+
+        </div>
+        <div class="editor-container">
+            <input class="text-input" type="text" style="font-size: 20px;" onkeyup="onSetTxt(value)">
+            <input type="color" placeholder="white" onchange="onSetColor(value)">
+            <button class="line-switch" onclick="onSwitchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+            <button class="dec-icon" onclick="onSetFont('-')"> <img src="icons/decrease font - icon.png" alt=""></button>
+            <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png" alt=""></button>
+
+        </div>
+
+
+        
+    </section>
+    <script src="service/meme-service.js"></script>
+    <script src="gallery-controller.js"></script>
+    <script src="meme-controller.js"></script>
+</body>
+</html>
