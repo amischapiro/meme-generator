@@ -3,6 +3,9 @@ var gCanvas;
 var gCtx;
 var gCurrColor = 'white'
 var gCurrFontSize = 50
+var gAlign = 'center'
+var gShadow = false
+var gFont = 'impact'
 
 var gMeme = {
     selectedImgId:'1',
@@ -36,8 +39,8 @@ function onImgSelect(num){
 
 function renderMeme() {
     drawImage(gMeme.selectedImgId)
-    drawText(gMeme.lines[0].txt,140,30,0)
-    drawText(gMeme.lines[1].txt,gCanvas.height-500,gCanvas.width-80,1)
+    drawText(gMeme.lines[0].txt,gCanvas.width / 2,50,0)
+    drawText(gMeme.lines[1].txt,gCanvas.width/2,gCanvas.width-50,1)
      ///add input placeholder listener
 }
 
@@ -52,16 +55,31 @@ function drawImage(img) {
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
 }
 
+
 function drawText(txt, x, y,idx) {
     ///border only on current text
     // if(gMeme.selectedLineIdx===0)drawBorder(txt,x,y)
     // if(gMeme.selectedLineIdx===1)drawBorder(txt,x,y)
-    gCtx.textBaseline = 'top'
-    // gCtx.textBaseline = 'middle'
-    // gCtx.textAlign = 'center'
-    gCtx.textAlign = 'left'
-    gCtx.font = ` ${gMeme.lines[idx].size}px monospace`;
+    // gCtx.textBaseline = 'top'
+    gCtx.textBaseline = 'middle'
+    gCtx.textAlign = gAlign
+    if(gShadow){
+        gCtx.shadowColor = 'black'
+        gCtx.shadowBlur = 10
+    }else{
+        gCtx.shadowBlur = 0
+    }
+    // gCtx.textAlign = 'left'
+    var textWidth = gCtx.measureText(txt).width
+    gCtx.font = ` ${gMeme.lines[idx].size}px ${gFont}`;
     gCtx.fillStyle = gMeme.lines[idx].color;
+    var words = txt.split(' ')
+    // console.log('words:', words.length);
+    
+    // if(gCanvas.width - textWidth<100){
+    //     y+=30
+    //     gCtx.fillText()
+    // }
     gCtx.fillText(txt, x, y);
 }
 
@@ -167,3 +185,18 @@ function renderGmemes(){
 
 }
 
+function setAlign(direction){
+    gAlign = direction
+    renderMeme()
+}
+
+function setShadow(){
+    gShadow = !gShadow
+    renderMeme()
+    
+}
+
+function setFont(val){
+    gFont = val
+    renderMeme()
+}

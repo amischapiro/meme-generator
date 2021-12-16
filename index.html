@@ -67,13 +67,16 @@
                     alt=""></button>
             <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png"
                     alt=""></button>
-            <button class="text-ltr"><img src="icons/align-to-right.png" alt=""></button>
-            <button class="text-center"><img src="icons/center-text-alignment.png" alt=""></button>
-            <button class="text-rtl"><img src="icons/align-to-left.png" alt=""></button>
-            <select name="font-select" id="font-select">
-                <option value="Impact">Impact</option>
+            <button class="text-ltr" onclick="setAlign('right')"><img src="icons/align-to-left.png" alt=""></button>
+            <button class="text-center" onclick="setAlign('center')"><img src="icons/center-text-alignment.png" alt=""></button>
+            <button class="text-rtl" onclick="setAlign('left')"><img src="icons/align-to-right.png" alt=""></button>
+            <select name="font-select" id="font-select" onchange="setFont(value)">
+                <option value="impact">Impact</option>
+                <option value="cursive">Cursive</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
             </select>
-            <button class="text-stroke"><img src="icons/text stroke.png" alt=""></button>
+            <button class="text-stroke" onclick="setShadow()"><img src="icons/text stroke.png" alt=""></button>
             <input class="color" type="color" placeholder="white" onchange="onSetColor(value)">
             <button class="save" onclick="onSave()">Save meme</button>
 
