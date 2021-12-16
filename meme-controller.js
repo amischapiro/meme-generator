@@ -6,17 +6,17 @@ var gCurrFontSize = 50
 var gAlign = 'center'
 var gShadow = false
 var gFont = 'impact'
+var gNextHeight = 200
 
 var gMeme = {
     selectedImgId:'1',
     selectedLineIdx:0,
     lines: [
-        {txt:'Enter line',size:50,align:'left',color:'white'},
-        {txt:'Enter another line',size:50,align:'left',color:'red'}
+        {txt:'Enter line',size:50,align:'center',color:'white',height:50},
+        {txt:'Enter another line',size:50,align:'center',color:'red',height:450}
     ]
 
 }
-
 
 
 
@@ -30,7 +30,6 @@ function init() {
 }
 
 function onImgSelect(num){
-    // setCurrMeme(num)
     gMeme.selectedImgId = num
     changePage('editor')
 }
@@ -39,18 +38,12 @@ function onImgSelect(num){
 
 function renderMeme() {
     drawImage(gMeme.selectedImgId)
-    drawText(gMeme.lines[0].txt,gCanvas.width / 2,50,0)
-    drawText(gMeme.lines[1].txt,gCanvas.width/2,gCanvas.width-50,1)
-     ///add input placeholder listener
+     gMeme.lines.forEach((line,idx)=>{
+         drawText(line.txt,gCanvas.width/2,line.height,idx)
+     })
 }
 
 function drawImage(img) {
-    // var image = new Image()
-    // image.src = img
-    // image.onload = () => {
-    //     gCtx.drawImage(image, 0, 0, gCanvas.width, gCanvas.height)
-    // }
-
     var elImg = document.querySelector(`.img${img}`);
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
 }
@@ -69,17 +62,8 @@ function drawText(txt, x, y,idx) {
     }else{
         gCtx.shadowBlur = 0
     }
-    // gCtx.textAlign = 'left'
-    var textWidth = gCtx.measureText(txt).width
     gCtx.font = ` ${gMeme.lines[idx].size}px ${gFont}`;
     gCtx.fillStyle = gMeme.lines[idx].color;
-    var words = txt.split(' ')
-    // console.log('words:', words.length);
-    
-    // if(gCanvas.width - textWidth<100){
-    //     y+=30
-    //     gCtx.fillText()
-    // }
     gCtx.fillText(txt, x, y);
 }
 
@@ -120,21 +104,18 @@ function onSetFont(val){
 }
 
 function onSwitchLine(){
-    if(gMeme.selectedLineIdx===1){
-        gMeme.selectedLineIdx--
+    if(gMeme.selectedLineIdx=== gMeme.lines.length -1){
+        gMeme.selectedLineIdx = 0
         return
     }
     gMeme.selectedLineIdx++
+
+
 }
 
 function onSave(){
-    
     var meme = gCanvas.toDataURL()
-    saveToMemes(meme)
-    console.log('gMemes:', gMemes);
-    
-    
-    
+    saveToMemes(meme)   
 }
 
 
@@ -157,7 +138,7 @@ function changePage(page){
         elHome.style.display = 'none'
         elSearchBar.style.display = 'none'
         renderMeme()
-        elEditor.style.display = 'grid'
+        elEditor.style.display = 'flex'
         elFooter.style.display = 'block'
         elSavedMemes.style.display = 'none'
     }
@@ -198,5 +179,19 @@ function setShadow(){
 
 function setFont(val){
     gFont = val
+    renderMeme()
+}
+
+function onAddLine(){
+    gMeme.lines.push({txt:'Enter another line',size:50,align:'center',color:'blue',height:gNextHeight})   
+    gNextHeight +=50
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+    renderMeme()
+}
+
+function onDelete(){
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    gMeme.selectedLineIdx -- 
+    gNextHeight -= 50
     renderMeme()
 }
