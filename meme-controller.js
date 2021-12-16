@@ -29,7 +29,7 @@ function init() {
 function onImgSelect(num){
     // setCurrMeme(num)
     gMeme.selectedImgId = num
-    setEditor()
+    changePage('editor')
 }
 
 
@@ -54,8 +54,8 @@ function drawImage(img) {
 
 function drawText(txt, x, y,idx) {
     ///border only on current text
-    if(gMeme.selectedLineIdx===0)drawBorder(txt,x,y)
-    if(gMeme.selectedLineIdx===1)drawBorder(txt,x,y)
+    // if(gMeme.selectedLineIdx===0)drawBorder(txt,x,y)
+    // if(gMeme.selectedLineIdx===1)drawBorder(txt,x,y)
     gCtx.textBaseline = 'top'
     // gCtx.textBaseline = 'middle'
     // gCtx.textAlign = 'center'
@@ -88,16 +88,6 @@ function setLineTxt(val){
 
 
 
-function setEditor(){
-    var elHome = document.querySelector('.home')
-    var elEditor = document.querySelector('.editor')
-    var elSearchBar = document.querySelector('.search-bar')
-    elHome.style.display = 'none'
-    elSearchBar.style.display = 'none'
-    renderMeme()
-    elEditor.style.display = 'grid'
-}
-
 function onSetColor(val){
     gMeme.lines[gMeme.selectedLineIdx].color= val
     renderMeme()
@@ -118,3 +108,62 @@ function onSwitchLine(){
     }
     gMeme.selectedLineIdx++
 }
+
+function onSave(){
+    
+    var meme = gCanvas.toDataURL()
+    saveToMemes(meme)
+    console.log('gMemes:', gMemes);
+    
+    
+    
+}
+
+
+function changePage(page){
+    var elHome = document.querySelector('.home')
+    var elEditor = document.querySelector('.editor')
+    var elSearchBar = document.querySelector('.search-bar')
+    var elFooter = document.querySelector('.footer')
+    var elSavedMemes = document.querySelector('.saved-memes')
+    if(page === 'meme'){
+        elHome.style.display = 'none'
+        elEditor.style.display = 'none'
+        elSearchBar.style.display = 'none'
+        elFooter.style.display = 'none'
+        renderGmemes()
+        elSavedMemes.style.display = 'flex'
+
+    }
+    if(page === 'editor'){
+        elHome.style.display = 'none'
+        elSearchBar.style.display = 'none'
+        renderMeme()
+        elEditor.style.display = 'grid'
+        elFooter.style.display = 'block'
+        elSavedMemes.style.display = 'none'
+    }
+    if(page === 'gallery'){
+        elSearchBar.style.display= 'block'
+        elHome.style.display= 'grid'
+        elEditor.style.display = 'none'
+        elFooter.style.display = 'block'
+        elSavedMemes.style.display = 'none'
+    }
+}
+
+function renderGmemes(){
+    const memes = loadFromStorage(MEME_STORAGE_KEY)
+    console.log('memes:', memes);
+    
+    
+    var strHTMLs = memes.map(function(meme){
+       return  `<div><img src="${meme}" ></div>`
+    })
+    console.log('strHTMLs:', strHTMLs);
+    
+    document.querySelector('.saved-memes').innerHTML = strHTMLs.join('')
+    
+
+}
+

@@ -8,17 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <title>Memegen</title>
 </head>
-
 <body onload="init()">
     <header class="header">
         <div class="flex align-center space-between header-content">
             <div class="logo">memegen</div>
             <nav class="header-nav">
                 <ul class="clean-list flex">
-                    <li><a href="#">Gallery|</a></li>
+                    <li><a href="#" onclick="changePage('gallery')">Gallery|</a></li>
                     <li><a href="#">About|</a></li>
                     <!-- <li><a href="#">Memes</a></li> -->
-                    <button class="memes-btn">Memes</button>
+                    <button class="memes-btn" onclick="changePage('meme')">Memes</button>
                 </ul>
             </nav>
         </div>
@@ -47,6 +46,9 @@
 
     </section>
 
+    <section class="saved-memes">
+
+    </section>
 
 
 

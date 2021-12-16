@@ -90,7 +90,8 @@ img{
 
 
 
-
+/* main layout 
+max width with breaks*/
 
 
 /* EDITOR  */
@@ -199,6 +200,18 @@ canvas{
 .save{
     border-radius: 6px;
     background-color: #fff;
+}
+
+
+/* SAVED MEMES */
+.saved-memes{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.saved-memes img{
+    height: 100px;
+    width: 100px;
 }
 
 
