@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Memegen</title>
 </head>
@@ -16,7 +17,7 @@
                 <ul class="clean-list flex">
                     <li><a href="#" onclick="changePage('gallery')">Gallery</a></li>
                     <a>|</a>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#about">About</a></li>
                     <a>|</a>
                     <li><a href="#" onclick="changePage('meme')">Memes</a></li>
                 </ul>
@@ -47,14 +48,28 @@
     <section class="home main-layout">
 
     </section>
+    <section id="about" class="about flex">
+        <div class="round-img"><img src="img/me.jpg"></div>
+        <div class="about-content">
+           <div> <h2>Amitai Schapiro</h2></div>
+            <div><p>is a student in the Coding Academy Fullstack development bootcamp,<br>
+                he lives in Ra'anana, Israel and is 23 years old.
+            </p></div>
+            <div class="flex">
+                <div class="fa-link"><a href="https://www.linkedin.com/" target="_blank"><img src="icons/linkedin-logo.png" alt=""></a></div>
+                <div class="fa-link"><a href="https://www.facebook.com/" target="_blank"><img src="icons/facebook-logo.png" alt=""></a></div>
+                <div class="fa-link"><a href="https://www.github.com/" target="_blank"><img src="icons/github-logo.png" alt=""></a></div>
+            </div>
+        </div>
+    </section>
 
-    <section class="saved-memes main-layout">
+    <section class="saved-memes main-layout" style="display: none;">
 
     </section>
 
 
 
-    <section class="editor main-layout">
+    <section class="editor main-layout" style="display: none;">
         <div class="canvas-container">
             <canvas id="my-canvas" height="500" width="500"></canvas>
 
@@ -72,7 +87,7 @@
             <button class="text-ltr" onclick="setAlign('right')"><img src="icons/align-to-left.png" alt=""></button>
             <button class="text-center" onclick="setAlign('center')"><img src="icons/center-text-alignment.png" alt=""></button>
             <button class="text-rtl" onclick="setAlign('left')"><img src="icons/align-to-right.png" alt=""></button>
-            <select name="font-select" id="font-select" onchange="setFont(value)">
+            <select name="font-select" id="font-select" onchange="setFont(value)" style="border: none;">
                 <option value="impact">Impact</option>
                 <option value="cursive">Cursive</option>
                 <option value="serif">Serif</option>
@@ -80,7 +95,16 @@
             </select>
             <button class="text-stroke" onclick="setShadow()"><img src="icons/text stroke.png" alt=""></button>
             <input class="color" type="color" placeholder="white" onchange="onSetColor(value)">
+            <div class="emoji flex">    
+                <div>◀</div>
+                <div>🎁</div>
+                <div>👽</div>
+                <div>👄</div>
+                <div>💖</div>
+                <div>▶</div>
+            </div>
             <button class="save" onclick="onSave()">Save meme</button>
+            <button class="share">Share</button>
 
         </div>
     </section>

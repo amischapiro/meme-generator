@@ -7,6 +7,10 @@
     font-family:mont;
     src: url(fonts/Montserrat/Montserrat-Regular.ttf);
 }
+@font-face {
+    font-family:mont-med;
+    src: url(fonts/Montserrat/Montserrat-Medium.ttf);
+}
 
 body{
     background-color: lightgray;
@@ -116,12 +120,12 @@ img{
 }
 .editor-container{
     display: grid;
-    border: solid black 1px;
-    width: 50%;
-    /* height: 500px; */
+    padding: 20px;
+    /* margin: 20px; */
+    width: 40%;
     grid-template-columns:repeat(5,1fr) ;
     grid-template-rows: repeat(4,1fr) 2fr 1fr;
-    /* gap: 20px; */
+    gap: 20px;
 }
 #my-canvas{
     /* display: block; */
@@ -132,9 +136,15 @@ img{
     height: 100%;
     padding: 20px 10px 20px 0 ;
 }
+.editor-container button{
+    border: none;
+}
+.editor-container button img{
+    padding: 6px;
+}
 .text-input{
     border-radius: 6px;
-    /* border: none; */
+    border: none;
     grid-column: 1/6;
 }
 .inc-icon{
@@ -202,11 +212,37 @@ img{
     border-radius: 6px;
     height: 100%;
     width: 100%;
-    src: url(/icons/paint-board-and-brush.png);
+    border: none;
 }
 .save{
     border-radius: 6px;
+    background-color: lightskyblue;
+    grid-row: 6/7;
+    grid-column: 1/3;
+    font-family: mont;
+    color: white;
+    font-size: larger;
+}
+.emoji{
     background-color: #fff;
+    grid-row: 5/6;
+    grid-column: 1/6;
+    border-radius: 6px;
+    align-items: center;
+}
+.emoji div{
+    flex-grow: 1;
+    font-size: 40px;
+    padding-left: 6px;
+}
+.share{
+    grid-row: 6/7;
+    grid-column: 4/6;
+    background-color: #ff7f00;
+    border-radius: 6px;
+    color: white;
+    font-family: mont;
+    font-size: larger;
 }
 
 
@@ -214,11 +250,57 @@ img{
 .saved-memes{
     display: flex;
     justify-content: space-evenly;
+    min-height: 600px;
 }
 
 .saved-memes img{
     height: 100px;
     width: 100px;
+}
+
+/* ABOUT  */
+.about{
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-color: #fff;
+    justify-content: center;
+}
+.round-img{
+    margin-right:20px ;
+}
+.round-img img{
+    max-height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.about p{
+    font-size: 20px;
+    margin-top: 0;
+}
+.about h2{
+     margin-bottom: 5px;
+}
+.about button{
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 6px;
+    background-color: #ff7f00;
+    border: none;
+    color: #FFFFFF;
+}
+.about button img{
+    padding: 4px;
+}
+
+.fa-link{
+    height: 30px;
+    width: 30px;
+    background-color: #ff7f00;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+.about a img{
+  padding: 4px;
 }
 
 

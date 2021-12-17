@@ -125,29 +125,34 @@ function changePage(page){
     var elSearchBar = document.querySelector('.search-bar')
     var elFooter = document.querySelector('.footer')
     var elSavedMemes = document.querySelector('.saved-memes')
+    var elAbout = document.querySelector('.about')
     if(page === 'meme'){
         elHome.style.display = 'none'
         elEditor.style.display = 'none'
         elSearchBar.style.display = 'none'
-        elFooter.style.display = 'none'
+        elFooter.style.display = 'flex'
+        elAbout.style.display= 'none'
         renderGmemes()
         elSavedMemes.style.display = 'flex'
+
 
     }
     if(page === 'editor'){
         elHome.style.display = 'none'
         elSearchBar.style.display = 'none'
+        elAbout.style.display= 'none'
         renderMeme()
         elEditor.style.display = 'flex'
-        elFooter.style.display = 'block'
+        elFooter.style.display = 'flex'
         elSavedMemes.style.display = 'none'
     }
     if(page === 'gallery'){
         elSearchBar.style.display= 'block'
         elHome.style.display= 'grid'
         elEditor.style.display = 'none'
-        elFooter.style.display = 'block'
+        elFooter.style.display = 'flex'
         elSavedMemes.style.display = 'none'
+        elAbout.style.display = 'flex'
     }
 }
 
