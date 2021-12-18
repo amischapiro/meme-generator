@@ -22,22 +22,23 @@
                     <li><a href="#" onclick="changePage('meme')">Memes</a></li>
                 </ul>
             </nav>
+            <div class="menu" onclick="onMenuClick()"><button><img src="img/menu.png" alt=""></button></div>
         </div>
     </header>
     <section class="search-bar">
-        <div class="flex align-center space-between header-content main-layout">
+        <div class=" search-first-div flex align-center space-between header-content main-layout">
             <div class="search flex">
                 <input type="text" name="search-input" id="search-input" placeholder="Enter search keyword"><button class="search-btn"><img
                         src="icons/search-icon.png" alt=""></button>
             </div>
             <nav class="search-nav">
                 <ul class="clean-list flex">
-                    <li><button>funny</button></li>
-                    <li><button>comics</button></li>
-                    <li><button>dogs</button></li>
-                    <li><button>drinks</button></li>
-                    <li><button>books</button></li>
-                    <li><button>more...</button></li>
+                    <li><button onclick="setFilter('funny')">funny</button></li>
+                    <li><button onclick="setFilter('movies')">movies</button></li>
+                    <li><button onclick="setFilter('pets')">pets</button></li>
+                    <li><button onclick="setFilter('babies')">babies</button></li>
+                    <li><button onclick="setFilter('politics')">politics</button></li>
+                    <li><button class="more">more...</button></li>
                 </ul>
             </nav>
 
@@ -94,13 +95,13 @@
                 <option value="monospace">Monospace</option>
             </select>
             <button class="text-stroke" onclick="setShadow()"><img src="icons/text stroke.png" alt=""></button>
-            <input class="color" type="color" placeholder="white" onchange="onSetColor(value)">
+            <div class="color-div"><input class="color" type="color" onchange="onSetColor(value)"><img src="icons/paint-board-and-brush.png" alt=""></div>
             <div class="emoji flex">    
                 <div>◀</div>
-                <div>🎁</div>
-                <div>👽</div>
-                <div>👄</div>
-                <div>💖</div>
+                <div onclick="addEmoji('🎁')">🎁</div>
+                <div onclick="addEmoji('👽')">👽</div>
+                <div onclick="addEmoji('👄')">👄</div>
+                <div onclick="addEmoji('💖')">💖</div>
                 <div>▶</div>
             </div>
             <button class="save" onclick="onSave()">Save meme</button>

@@ -7,3 +7,4 @@ function loadFromStorage(key) {
     return JSON.parse(val)
     
 }
+

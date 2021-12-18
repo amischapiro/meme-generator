@@ -26,8 +26,13 @@ body{
 }
 .logo{
     font-size: 25px;
-    padding-left: 20px;
     font-weight: bold;
+}
+.menu{
+    display: none;
+}
+.hamburger{
+    display: none;
 }
 
 
@@ -44,6 +49,7 @@ body{
     color: black;
     box-shadow: inset 0px -4px 0 black;
 }
+
 
 .header-nav ul li{
     width: 80px;
@@ -70,10 +76,10 @@ img{
     width: 100%;
 }
 .search-bar{
-    /* height: fit-content; */
-    min-height: 80px;
+    /* min-height: 80px; */
+    line-height: 80px;
     background-color: #fff;
-
+    
 }
 .search-bar ul li button{
     /* line-height: 50px;  */
@@ -83,7 +89,11 @@ img{
     border: none;
     line-height: 80px;
     width: 80px;
+    max-width: 80px;
     font-size: 20px;
+}
+.more{
+    text-decoration: underline;
 }
 .search button{
     background-color: #fff;
@@ -100,13 +110,55 @@ img{
     
 }
 
+@media (max-width:830px){
+    .home{
+        grid-template-columns:repeat(2,1fr) ;
+    }
+    .search-bar ul li:nth-child(4){
+        display: none;
+    }
+    .search-bar ul li:nth-child(5){
+        display: none;
+    }
+    .search-first-div{
+        flex-direction: column;
+    }
+    .search input{
+        height: 30px;
+        font-size: 15px;
+        padding-top: 10px;
+    }
+    .search button{
+        height: 30px;
+        padding-top:10px ;
+    }
+    .header-nav ul{
+        display: none;
+    }
+    .menu{
+        color: white;
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 25px;
+    }
+    .menu button{
+        height: 20px;
+        background-color:#ff7f00 ;
+        border: none;
+        color: white;
+    }
+
+}
 
 /* EDITOR  */
 .editor{
     /* display: grid; */
     display: flex;
     flex-direction: row;
-    height: 500px;
+    /* height: 500px; */
+    width: 80vw;
+    height: 70vh;
     /* margin: 0 auto; */
     /* grid-template-columns: 1fr 1fr; */
     /* display: none; */
@@ -115,27 +167,36 @@ img{
 .canvas-contianer{
     /* margin: 0 auto; */
     width: 50%;
+    /* height: 100%; */
     /* height: 90%; */
     
 }
 .editor-container{
     display: grid;
     padding: 20px;
-    /* margin: 20px; */
-    width: 40%;
+    width: 50%;
     grid-template-columns:repeat(5,1fr) ;
     grid-template-rows: repeat(4,1fr) 2fr 1fr;
     gap: 20px;
 }
 #my-canvas{
-    /* display: block; */
-    /* margin: 0 auto; */
-    /* background-color: #fff; */
-    /* border: 1px black solid; */
     cursor: grab;
     height: 100%;
+    width: 100%;
     padding: 20px 10px 20px 0 ;
 }
+/* @media (max-width:1070px){
+    #my-canvas{
+        height: 70%;
+    }
+    .editor-container{
+        width: 20%;
+        height: 70%;
+    }
+    .editor-container button img{
+        height: 10px;
+    }
+} */
 .editor-container button{
     border: none;
 }
@@ -207,12 +268,26 @@ img{
     background-color: #fff;
 }
 .color{
+    /* grid-row: 4/5;
+    grid-column: 5/6; */
+    border-radius: 6px;
+    /* height: inherit; */
+    /* width: 100%; */
+    height: 72px;
+    width: 68px;
+    border: none;
+    opacity: 0;
+    position: absolute;
+}
+.color-div img{
+    padding: 4px;
+}
+.color-div{
     grid-row: 4/5;
     grid-column: 5/6;
+    background-color: white;
     border-radius: 6px;
     height: 100%;
-    width: 100%;
-    border: none;
 }
 .save{
     border-radius: 6px;
@@ -234,6 +309,7 @@ img{
     flex-grow: 1;
     font-size: 40px;
     padding-left: 6px;
+    cursor: pointer;
 }
 .share{
     grid-row: 6/7;
@@ -248,14 +324,17 @@ img{
 
 /* SAVED MEMES */
 .saved-memes{
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    grid-template-rows: repeat(4,1fr);
     min-height: 600px;
+    padding-top: 20px;
+    gap: 0 20px;
 }
 
 .saved-memes img{
-    height: 100px;
-    width: 100px;
+    height: 90%;
+    width: 100%;
 }
 
 /* ABOUT  */

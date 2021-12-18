@@ -27,6 +27,8 @@ function init() {
     // resize
     // listeners
     renderMeme();
+    
+    
 }
 
 function onImgSelect(num){
@@ -96,8 +98,6 @@ function onSetColor(val){
 }
 
 function onSetFont(val){ 
-    console.log('gMeme.lines[]:', gMeme.selectedLineIdx);
-    
     if (val==='+') gMeme.lines[gMeme.selectedLineIdx].size += 2
     if (val==='-') gMeme.lines[gMeme.selectedLineIdx].size -= 2
     renderMeme()
@@ -133,7 +133,7 @@ function changePage(page){
         elFooter.style.display = 'flex'
         elAbout.style.display= 'none'
         renderGmemes()
-        elSavedMemes.style.display = 'flex'
+        elSavedMemes.style.display = 'grid'
 
 
     }
@@ -153,18 +153,16 @@ function changePage(page){
         elFooter.style.display = 'flex'
         elSavedMemes.style.display = 'none'
         elAbout.style.display = 'flex'
+        gFilter = null
+        renderImgs()
     }
 }
 
 function renderGmemes(){
     const memes = loadFromStorage(MEME_STORAGE_KEY)
-    console.log('memes:', memes);
-    
-    
     var strHTMLs = memes.map(function(meme){
        return  `<div><img src="${meme}" ></div>`
     })
-    console.log('strHTMLs:', strHTMLs);
     
     document.querySelector('.saved-memes').innerHTML = strHTMLs.join('')
     
@@ -199,4 +197,9 @@ function onDelete(){
     gMeme.selectedLineIdx -- 
     gNextHeight -= 50
     renderMeme()
+}
+
+
+function addEmoji(emoji){   
+    gCtx.fillText(emoji,gCanvas.width/2,gCanvas.height/2)
 }
