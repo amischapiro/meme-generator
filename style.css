@@ -82,6 +82,7 @@ button{
 img{
     height: 100%;
     width: 100%;
+    border-radius: 7px;
 }
 .search-bar{
     /* min-height: 80px; */
