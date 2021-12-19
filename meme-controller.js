@@ -27,8 +27,7 @@ function init() {
     // resize
     // listeners
     renderMeme();
-    
-    
+    setKeys()
 }
 
 function onImgSelect(num){
@@ -104,11 +103,15 @@ function onSetFont(val){
 }
 
 function onSwitchLine(){
+    const elInput = document.querySelector('.text-input')
+    
     if(gMeme.selectedLineIdx=== gMeme.lines.length -1){
         gMeme.selectedLineIdx = 0
+        elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
         return
     }
-    gMeme.selectedLineIdx++
+    gMeme.selectedLineIdx++  
+    elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
 
 
 }
@@ -116,6 +119,7 @@ function onSwitchLine(){
 function onSave(){
     var meme = gCanvas.toDataURL()
     saveToMemes(meme)   
+    flashMsg('Meme saved!')
 }
 
 
@@ -202,4 +206,31 @@ function onDelete(){
 
 function addEmoji(emoji){   
     gCtx.fillText(emoji,gCanvas.width/2,gCanvas.height/2)
+}
+
+function onDownload(elLink){
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-canvas.jpg'
+    flashMsg('Meme downloaded!')
+
+}
+
+function flashMsg(msg){
+    const el = document.querySelector('.saved-msg')
+    el.innerText = msg
+    el.classList.add('open')
+    setTimeout(() => {
+        el.classList.remove('open')
+    }, 2000)
+}
+
+function onMore(){
+    var elBabies = document.querySelector('.search-bar ul li:nth-child(4)')
+    var elPolitics = document.querySelector('.search-bar ul li:nth-child(5)')
+    var elMore = document.querySelector('.more') 
+    elBabies.style.display = 'block'
+    elPolitics.style.display = 'block'
+    elMore.style.display = 'none'
+
 }

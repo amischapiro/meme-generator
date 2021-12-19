@@ -5,116 +5,136 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <title>Memegen</title>
 </head>
+
 <body onload="init()">
-    <header class="header">
-        <div class="flex align-center space-between header-content main-layout">
-            <div class="logo">memegen</div>
-            <nav class="header-nav">
-                <ul class="clean-list flex">
-                    <li><a href="#" onclick="changePage('gallery')">Gallery</a></li>
-                    <a>|</a>
-                    <li><a href="#about">About</a></li>
-                    <a>|</a>
-                    <li><a href="#" onclick="changePage('meme')">Memes</a></li>
-                </ul>
-            </nav>
-            <div class="menu" onclick="onMenuClick()"><button><img src="img/menu.png" alt=""></button></div>
-        </div>
-    </header>
-    <section class="search-bar">
-        <div class=" search-first-div flex align-center space-between header-content main-layout">
-            <div class="search flex">
-                <input type="text" name="search-input" id="search-input" placeholder="Enter search keyword"><button class="search-btn"><img
-                        src="icons/search-icon.png" alt=""></button>
+    <div class="app-container flex">
+        <header class="header">
+            <div class="flex align-center space-between header-content main-layout">
+                <div class="logo" onclick="changePage('gallery')">memegen</div>
+                <nav class="header-nav">
+                    <ul class="clean-list flex">
+                        <li><a href="#" onclick="changePage('gallery')">Gallery</a></li>
+                        <a>|</a>
+                        <!-- change to regular -->
+                        <li><a href="#about">About</a></li>
+                        <a>|</a>
+                        <li><a href="#" onclick="changePage('meme')">Memes</a></li>
+                    </ul>
+                </nav>
+                <div class="menu" onclick="onMenuClick()"><button><img src="img/menu.png" alt=""></button></div>
             </div>
-            <nav class="search-nav">
-                <ul class="clean-list flex">
-                    <li><button onclick="setFilter('funny')">funny</button></li>
-                    <li><button onclick="setFilter('movies')">movies</button></li>
-                    <li><button onclick="setFilter('pets')">pets</button></li>
-                    <li><button onclick="setFilter('babies')">babies</button></li>
-                    <li><button onclick="setFilter('politics')">politics</button></li>
-                    <li><button class="more">more...</button></li>
-                </ul>
-            </nav>
+        </header>
+        <main>
+            <section class="search-bar">
+                <div class=" search-first-div flex align-center space-between header-content main-layout">
+                    <div class="search flex">
+                        <input type="text" name="search-input" id="search-input"
+                            placeholder="Enter search keyword">
+                            <button class="search-btn" onclick="onSearch"><img src="icons/search-icon.png" alt=""></button>
+                    </div>
+                    <nav class="search-nav">
+                        <ul class="clean-list flex">
+                            <li><button class="funny-btn" onclick="setFilter('funny')">funny</button></li>
+                            <li><button class="movies-btn" onclick="setFilter('movies')">movies</button></li>
+                            <li><button class="pets-btn" onclick="setFilter('pets')">pets</button></li>
+                            <li><button class="babies-btn" onclick="setFilter('babies')">babies</button></li>
+                            <li><button class="politics-btn" onclick="setFilter('politics')">politics</button></li>
+                            <li><button class="more" onclick="onMore()">more...</button></li>
+                        </ul>
+                    </nav>
 
-        </div>
+                </div>
 
-    </section>
+            </section>
 
-    <section class="home main-layout">
+            <section class="home main-layout">
 
-    </section>
-    <section id="about" class="about flex">
-        <div class="round-img"><img src="img/me.jpg"></div>
-        <div class="about-content">
-           <div> <h2>Amitai Schapiro</h2></div>
-            <div><p>is a student in the Coding Academy Fullstack development bootcamp,<br>
-                he lives in Ra'anana, Israel and is 23 years old.
-            </p></div>
-            <div class="flex">
-                <div class="fa-link"><a href="https://www.linkedin.com/" target="_blank"><img src="icons/linkedin-logo.png" alt=""></a></div>
-                <div class="fa-link"><a href="https://www.facebook.com/" target="_blank"><img src="icons/facebook-logo.png" alt=""></a></div>
-                <div class="fa-link"><a href="https://www.github.com/" target="_blank"><img src="icons/github-logo.png" alt=""></a></div>
-            </div>
-        </div>
-    </section>
+            </section>
+            <section id="about" class="about flex">
+                <div class="round-img"><img src="img/me.jpg"></div>
+                <div class="about-content">
+                    <div>
+                        <h2>Amitai Schapiro</h2>
+                    </div>
+                    <div>
+                        <p>is a student in the Coding Academy Fullstack development bootcamp,<br>
+                            he lives in Ra'anana, Israel and is 23 years old.
+                        </p>
+                    </div>
+                    <div class="flex">
+                        <div class="fa-link"><a href="https://www.linkedin.com/" target="_blank"><img
+                                    src="icons/linkedin-logo.png" alt=""></a></div>
+                        <div class="fa-link"><a href="https://www.facebook.com/" target="_blank"><img
+                                    src="icons/facebook-logo.png" alt=""></a></div>
+                        <div class="fa-link"><a href="https://www.github.com/" target="_blank"><img
+                                    src="icons/github-logo.png" alt=""></a></div>
+                    </div>
+                </div>
+            </section>
 
-    <section class="saved-memes main-layout" style="display: none;">
+            <section class="saved-memes main-layout" style="display: none;">
 
-    </section>
+            </section>
 
 
 
-    <section class="editor main-layout" style="display: none;">
-        <div class="canvas-container">
-            <canvas id="my-canvas" height="500" width="500"></canvas>
+            <section class="editor main-layout flex" style="display: none;">
+                <div class="canvas-container">
+                    <canvas id="my-canvas" height="500" width="500"></canvas>
 
-        </div>
-        <div class="editor-container">
-            <input class="text-input" type="text" style="font-size: 20px;" onkeyup="onSetTxt(value)">
-            <button class="line-switch" onclick="onSwitchLine()"><img
-                    src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-            <button class="add" onclick="onAddLine()"><img src="icons/add.png" alt=""></button>
-            <button class="trash" onclick="onDelete()"><img src="icons/trash.png" alt=""></button>
-            <button class="dec-icon" onclick="onSetFont('-')"> <img src="icons/decrease font - icon.png"
-                    alt=""></button>
-            <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png"
-                    alt=""></button>
-            <button class="text-ltr" onclick="setAlign('right')"><img src="icons/align-to-left.png" alt=""></button>
-            <button class="text-center" onclick="setAlign('center')"><img src="icons/center-text-alignment.png" alt=""></button>
-            <button class="text-rtl" onclick="setAlign('left')"><img src="icons/align-to-right.png" alt=""></button>
-            <select name="font-select" id="font-select" onchange="setFont(value)" style="border: none;">
-                <option value="impact">Impact</option>
-                <option value="cursive">Cursive</option>
-                <option value="serif">Serif</option>
-                <option value="monospace">Monospace</option>
-            </select>
-            <button class="text-stroke" onclick="setShadow()"><img src="icons/text stroke.png" alt=""></button>
-            <div class="color-div"><input class="color" type="color" onchange="onSetColor(value)"><img src="icons/paint-board-and-brush.png" alt=""></div>
-            <div class="emoji flex">    
-                <div>◀</div>
-                <div onclick="addEmoji('🎁')">🎁</div>
-                <div onclick="addEmoji('👽')">👽</div>
-                <div onclick="addEmoji('👄')">👄</div>
-                <div onclick="addEmoji('💖')">💖</div>
-                <div>▶</div>
-            </div>
-            <button class="save" onclick="onSave()">Save meme</button>
-            <button class="share">Share</button>
+                </div>
+                <div class="editor-container">
+                    <input class="text-input" type="text" style="font-size: 20px;" onkeyup="onSetTxt(value)"
+                        placeholder="Enter line text">
+                    <button class="line-switch" onclick="onSwitchLine()"><img
+                            src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button class="add" onclick="onAddLine()"><img src="icons/add.png" alt=""></button>
+                    <button class="trash" onclick="onDelete()"><img src="icons/trash.png" alt=""></button>
+                    <button class="dec-icon" onclick="onSetFont('-')"> <img src="icons/decrease font - icon.png"
+                            alt=""></button>
+                    <button class="inc-icon" onclick="onSetFont('+')"> <img src="icons/increase font - icon.png"
+                            alt=""></button>
+                    <button class="text-ltr" onclick="setAlign('right')"><img src="icons/align-to-left.png"
+                            alt=""></button>
+                    <button class="text-center" onclick="setAlign('center')"><img src="icons/center-text-alignment.png"
+                            alt=""></button>
+                    <button class="text-rtl" onclick="setAlign('left')"><img src="icons/align-to-right.png"
+                            alt=""></button>
+                    <select name="font-select" id="font-select" onchange="setFont(value)" style="border: none;">
+                        <option value="impact">Impact</option>
+                        <option value="cursive">Cursive</option>
+                        <option value="serif">Serif</option>
+                        <option value="monospace">Monospace</option>
+                    </select>
+                    <button class="text-stroke" onclick="setShadow()"><img src="icons/text stroke.png" alt=""></button>
+                    <div class="color-div"><input class="color" type="color" onchange="onSetColor(value)"><img
+                            src="icons/paint-board-and-brush.png" alt=""></div>
+                    <div class="emoji ">
+                        <div onclick="addEmoji('🎁')">🎁</div>
+                        <div onclick="addEmoji('👽')">👽</div>
+                        <div onclick="addEmoji('🔥')">🔥</div>
+                        <div onclick="addEmoji('💖')">💖</div>
+                        <div onclick="addEmoji('⚽')">⚽</div>
+                    </div>
+                    <button class="save" onclick="onSave()">Save meme</button>
+                    <!-- <button class="share">Share</button> -->
+                    <button class="download"><a href="#" onclick="onDownload(this)" download="">Download</a></button>
 
-        </div>
-    </section>
+                </div>
+                <div class="saved-msg">Meme saved!</div>
+            </section>
+        </main>
         <footer class="footer flex align-center">
             <div class="logo">memegen</div>
             <small>all rights reserved 2021</small>
 
 
         </footer>
+    </div>
 
 
     <script src="service/storage-service.js"></script>
