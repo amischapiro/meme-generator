@@ -80,8 +80,7 @@ function setKeys(){
 function getKeys(){
     var keys = loadFromStorage(KEYS_STORAGE_KEY)
     if(!keys){
-        console.log('keys',keys)
-        keys = {funny:20,movies:20,pets:20,babies:20,politics:20}
+        keys = {funny:20,movies:25,pets:20,babies:22,politics:20}
     }
     return keys
 }
